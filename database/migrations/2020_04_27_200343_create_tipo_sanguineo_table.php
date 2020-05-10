@@ -15,7 +15,7 @@ class CreateTipoSanguineoTable extends Migration
     {
         Schema::create('tipo_sanguineo', function (Blueprint $table) {
             $table->smallIncrements('id');
-            $table->string('tipo_sanguineo', 3);
+            $table->string('descricao', 3);
         });
     }
 

@@ -8,11 +8,35 @@ class TipoSanguineoSeeder extends Seeder
     private $tipos = [
         [
             "id" => 1,
-            "tipo_sanguineo" => "A+"
+            "descricao" => "A+"
         ],
         [
             "id" => 2,
-            "tipo_sanguineo" => "A-"
+            "descricao" => "A-"
+        ],
+        [
+            "id" => 3,
+            "descricao" => "B+"   
+        ],
+        [
+            "id" => 4,
+            "descricao" => "B-"   
+        ],
+        [
+            "id" => 5,
+            "descricao" => "O+"   
+        ],
+        [
+            "id" => 6,
+            "descricao" => "O-"   
+        ],
+        [
+            "id" => 7,
+            "descricao" => "AB+"   
+        ],
+        [
+            "id" => 8,
+            "descricao" => "AB-"   
         ]
     ];
     
@@ -24,7 +48,16 @@ class TipoSanguineoSeeder extends Seeder
     public function run()
     {
         foreach($this->tipos as $tipo) {
-            dd($tipo);
+            $tipoSanguineo = TipoSanguineo::find($tipo["id"]);
+
+            if($tipoSanguineo) {
+                //Atualizar
+                $tipoSanguineo->descricao = $tipo["descricao"];
+                $tipoSanguineo->save();
+            } else {
+                //Criar um registro
+                TipoSanguineo::create($tipo);
+            }
         }
     }
 }
